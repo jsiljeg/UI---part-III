@@ -1,0 +1,13 @@
+
+>> load('mnist.mat');
+>> target = zeros(60000, 10);
+>> for i = 1:60000
+       target(i, labels(i)+1) = 1;
+   end
+>> [model, uspjesnost] = train_mlpNN(X, target, [10 0], 500, 0.025, 0.05);
+>> Y = Y';
+>> target2 = zeros(10000, 10);
+>> for i = 1:10000
+       target2(i, labels_test(i)+1) = 1;
+   end
+>> uspjesnost2 = test_mlpNN(model, Y, target2); 
